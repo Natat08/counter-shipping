@@ -1,6 +1,6 @@
-let counter = 0;
 const topLimit = 5;
 const bottomLimit = 0;
+let counter = bottomLimit;
 
 const increaseBtn = document.querySelector('.increase');
 const decreaseBtn = document.querySelector('.decrease');
@@ -11,7 +11,7 @@ const messageEl = document.querySelector('.message');
 const messageAboutTopLimit = `You have reached the top limit - ${topLimit}!`;
 const messageAboutBottomLimit = `You have reached the bottom limit - ${bottomLimit}!`;
 
-increaseBtn.addEventListener('click', function () {
+function handleIncreaseClick() {
   if (resultEl.innerHTML < topLimit) {
     counter++;
     resultEl.innerHTML = counter;
@@ -24,9 +24,9 @@ increaseBtn.addEventListener('click', function () {
     messageEl.style.visibility = 'visible';
     increaseBtn.disabled = true;
   }
-});
+}
 
-decreaseBtn.addEventListener('click', function () {
+function handleDecreaseClick() {
   if (resultEl.innerHTML > bottomLimit) {
     counter--;
     resultEl.innerHTML = counter;
@@ -39,12 +39,16 @@ decreaseBtn.addEventListener('click', function () {
     messageEl.style.visibility = 'visible';
     decreaseBtn.disabled = true;
   }
-});
+}
 
-resetBtn.addEventListener('click', function () {
+function handleResetClick() {
   counter = 0;
   resultEl.innerHTML = counter;
-  decreaseBtn.disabled = false;
+  decreaseBtn.disabled = true;
   increaseBtn.disabled = false;
   messageEl.style.visibility = 'hidden';
-});
+}
+
+increaseBtn.addEventListener('click', handleIncreaseClick);
+decreaseBtn.addEventListener('click', handleDecreaseClick);
+resetBtn.addEventListener('click', handleResetClick);
