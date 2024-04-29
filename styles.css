@@ -51,7 +51,7 @@ h1 {
 }
 
 .message {
-  /* visibility: hidden; */
+  visibility: hidden;
   display: block;
   margin-bottom: 0.5rem;
   font-weight: bold;
