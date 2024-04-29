@@ -1,4 +1,5 @@
 const freeShippingLimit = 10;
+const outOfStockLimit = 20;
 const bottomLimit = 0;
 let counter = bottomLimit;
 
@@ -23,6 +24,9 @@ function handleIncreaseClick() {
     messageEl.innerHTML = messageAboutFreeShipping;
     messageEl.style.visibility = 'visible';
   }
+  if (resultEl.innerHTML >= outOfStockLimit) {
+    increaseBtn.classList.add('red');
+  }
 }
 
 function handleDecreaseClick() {
@@ -31,6 +35,9 @@ function handleDecreaseClick() {
     resultEl.innerHTML = counter;
     if (resultEl.innerHTML < freeShippingLimit) {
       messageEl.style.visibility = 'hidden';
+    }
+    if (resultEl.innerHTML < outOfStockLimit) {
+      increaseBtn.classList.remove('red');
     }
   } else {
     messageEl.innerHTML = messageAboutBottomLimit;
@@ -45,6 +52,7 @@ function handleResetClick() {
   decreaseBtn.disabled = true;
   increaseBtn.disabled = false;
   messageEl.style.visibility = 'hidden';
+  increaseBtn.classList.remove('red');
 }
 
 increaseBtn.addEventListener('click', handleIncreaseClick);

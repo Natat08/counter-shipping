@@ -5,6 +5,8 @@
   --color-secondary: #fff;
   --color-btn: #4ca1af;
   --color-btn-disabled: #888;
+  --color-btn-red: #f68484;
+  --color-btn-hover-red: #e54646;
   --color-text-primary: #444;
 }
 
@@ -114,4 +116,11 @@ h1 {
 .reset {
   padding: 0.5rem 1rem;
   width: 9rem;
+}
+
+.red {
+  background-color: var(--color-btn-red);
+}
+.btn.red:hover:enabled {
+  background-color: var(--color-btn-hover-red);
 }
