@@ -1,4 +1,4 @@
-const topLimit = 5;
+const freeShippingLimit = 10;
 const bottomLimit = 0;
 let counter = bottomLimit;
 
@@ -8,21 +8,20 @@ const resetBtn = document.querySelector('.reset');
 const resultEl = document.querySelector('.result');
 const messageEl = document.querySelector('.message');
 
-const messageAboutTopLimit = `You have reached the top limit - ${topLimit}!`;
+const messageAboutFreeShipping = 'You have free shipping';
 const messageAboutBottomLimit = `You have reached the bottom limit - ${bottomLimit}!`;
 
 function handleIncreaseClick() {
-  if (resultEl.innerHTML < topLimit) {
-    counter++;
-    resultEl.innerHTML = counter;
-    if (resultEl.innerHTML > bottomLimit) {
-      decreaseBtn.disabled = false;
-      messageEl.style.visibility = 'hidden';
-    }
-  } else {
-    messageEl.innerHTML = messageAboutTopLimit;
+  counter++;
+  resultEl.innerHTML = counter;
+  if (resultEl.innerHTML > bottomLimit) {
+    decreaseBtn.disabled = false;
+    messageEl.style.visibility = 'hidden';
+  }
+
+  if (resultEl.innerHTML >= freeShippingLimit) {
+    messageEl.innerHTML = messageAboutFreeShipping;
     messageEl.style.visibility = 'visible';
-    increaseBtn.disabled = true;
   }
 }
 
@@ -30,8 +29,7 @@ function handleDecreaseClick() {
   if (resultEl.innerHTML > bottomLimit) {
     counter--;
     resultEl.innerHTML = counter;
-    if (resultEl.innerHTML < topLimit) {
-      increaseBtn.disabled = false;
+    if (resultEl.innerHTML < freeShippingLimit) {
       messageEl.style.visibility = 'hidden';
     }
   } else {
