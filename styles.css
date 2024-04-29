@@ -1,0 +1,117 @@
+:root {
+  --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --gradient-primary: linear-gradient(to right, #4ca1af, #c4e0e5);
+  --color-primary: #c4e0e5;
+  --color-secondary: #fff;
+  --color-btn: #4ca1af;
+  --color-btn-disabled: #888;
+  --color-text-primary: #444;
+}
+
+/* CSS reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font: inherit;
+}
+
+/* base styling */
+html {
+  font-size: 62, 5%; /*10px*/
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-primary);
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+/* styling of components */
+main {
+  margin-top: 5rem;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+.message {
+  /* visibility: hidden; */
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.counter-section {
+  width: 15rem;
+  height: 27rem;
+  background-color: var(--color-secondary);
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
+}
+
+.result {
+  font-size: 2.5rem;
+  font-weight: bold;
+  width: 100%;
+  height: 60%;
+  background: var(--gradient-primary);
+  border-radius: 10px;
+  align-content: center;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.btn {
+  background-color: var(--color-primary);
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn:hover:enabled {
+  background-color: var(--color-btn);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  color: var(--color-btn-disabled);
+  cursor: not-allowed;
+}
+
+.increase,
+.decrease {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.reset {
+  padding: 0.5rem 1rem;
+  width: 9rem;
+}
