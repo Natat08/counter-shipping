@@ -10,36 +10,44 @@ const resultEl = document.querySelector('.result');
 const messageEl = document.querySelector('.message');
 
 const messageAboutFreeShipping = 'You have free shipping';
-const messageAboutBottomLimit = `You have reached the bottom limit - ${bottomLimit}!`;
+const messageAboutOutOfStock = 'Out of stock';
+const messageAboutBottomLimit = `You have reached the bottom limit - ${bottomLimit}`;
 
 function handleIncreaseClick() {
   counter++;
   resultEl.innerHTML = counter;
-  if (resultEl.innerHTML > bottomLimit) {
+  if (counter > bottomLimit) {
     decreaseBtn.disabled = false;
     messageEl.style.visibility = 'hidden';
   }
 
-  if (resultEl.innerHTML >= freeShippingLimit) {
+  if (counter >= freeShippingLimit && counter < outOfStockLimit) {
     messageEl.innerHTML = messageAboutFreeShipping;
     messageEl.style.visibility = 'visible';
   }
-  if (resultEl.innerHTML >= outOfStockLimit) {
+
+  if (counter >= outOfStockLimit) {
     increaseBtn.classList.add('red');
+    messageEl.innerHTML = messageAboutOutOfStock;
+    messageEl.style.visibility = 'visible';
   }
 }
 
 function handleDecreaseClick() {
-  if (resultEl.innerHTML > bottomLimit) {
-    counter--;
-    resultEl.innerHTML = counter;
-    if (resultEl.innerHTML < freeShippingLimit) {
-      messageEl.style.visibility = 'hidden';
-    }
-    if (resultEl.innerHTML < outOfStockLimit) {
-      increaseBtn.classList.remove('red');
-    }
-  } else {
+  counter--;
+  resultEl.innerHTML = counter;
+
+  if (counter >= freeShippingLimit && counter < outOfStockLimit) {
+    increaseBtn.classList.remove('red');
+    messageEl.innerHTML = messageAboutFreeShipping;
+    messageEl.style.visibility = 'visible';
+  }
+
+  if (counter < freeShippingLimit) {
+    messageEl.style.visibility = 'hidden';
+  }
+
+  if (counter === bottomLimit) {
     messageEl.innerHTML = messageAboutBottomLimit;
     messageEl.style.visibility = 'visible';
     decreaseBtn.disabled = true;
