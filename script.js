@@ -35,8 +35,9 @@ function removeMessageElement() {
 function handleIncreaseClick() {
   counter++;
   resultEl.innerHTML = counter;
-  if (counter > bottomLimit) {
+  if (counter === bottomLimit + 1) {
     decreaseBtn.disabled = false;
+    removeMessageElement();
   }
 
   if (counter === freeShippingLimit) {
@@ -54,20 +55,19 @@ function handleDecreaseClick() {
   counter--;
   resultEl.innerHTML = counter;
 
-  if (counter >= freeShippingLimit && counter < outOfStockLimit) {
+  if (counter === outOfStockLimit - 1) {
     increaseBtn.classList.remove('red');
-    messageEl.innerHTML = messageAboutFreeShipping;
-    messageEl.style.visibility = 'visible';
+    removeMessageElement();
+    addMessageElement(mainEl, messages.freeShipping);
   }
 
-  if (counter < freeShippingLimit) {
-    messageEl.style.visibility = 'hidden';
+  if (counter === freeShippingLimit - 1) {
+    removeMessageElement();
   }
 
   if (counter === bottomLimit) {
-    messageEl.innerHTML = messageAboutBottomLimit;
-    messageEl.style.visibility = 'visible';
     decreaseBtn.disabled = true;
+    addMessageElement(mainEl, messages.bottomLimit);
   }
 }
 
