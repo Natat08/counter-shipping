@@ -1,5 +1,5 @@
 const freeShippingLimit = 10;
-const outOfStockLimit = 15;
+const outOfStockLimit = 20;
 const bottomLimit = 0;
 let counter = bottomLimit;
 
@@ -22,9 +22,9 @@ function createSpanElement(message) {
   return newSpan;
 }
 
-function addMessageElement(parentElement, message) {
+function addMessageElement(message) {
   const messageElement = createSpanElement(message);
-  parentElement.appendChild(messageElement);
+  mainEl.appendChild(messageElement);
 }
 
 function removeMessageElement() {
@@ -41,13 +41,13 @@ function handleIncreaseClick() {
   }
 
   if (counter === freeShippingLimit) {
-    addMessageElement(mainEl, messages.freeShipping);
+    addMessageElement(messages.freeShipping);
   }
 
   if (counter === outOfStockLimit) {
     increaseBtn.classList.add('red');
     removeMessageElement();
-    addMessageElement(mainEl, messages.outOfStock);
+    addMessageElement(messages.outOfStock);
   }
 }
 
@@ -58,7 +58,7 @@ function handleDecreaseClick() {
   if (counter === outOfStockLimit - 1) {
     increaseBtn.classList.remove('red');
     removeMessageElement();
-    addMessageElement(mainEl, messages.freeShipping);
+    addMessageElement(messages.freeShipping);
   }
 
   if (counter === freeShippingLimit - 1) {
@@ -67,7 +67,7 @@ function handleDecreaseClick() {
 
   if (counter === bottomLimit) {
     decreaseBtn.disabled = true;
-    addMessageElement(mainEl, messages.bottomLimit);
+    addMessageElement(messages.bottomLimit);
   }
 }
 
