@@ -50,12 +50,12 @@ main {
 
 h1 {
   font-weight: normal;
+  margin-bottom: 0.5rem;
 }
 
 .message {
-  visibility: hidden;
   display: block;
-  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
   font-weight: bold;
 }
 
@@ -121,6 +121,7 @@ h1 {
 .red {
   background-color: var(--color-btn-red);
 }
+
 .btn.red:hover:enabled {
   background-color: var(--color-btn-hover-red);
 }
