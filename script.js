@@ -75,9 +75,8 @@ function handleResetClick() {
   counter = 0;
   resultEl.innerHTML = counter;
   decreaseBtn.disabled = true;
-  increaseBtn.disabled = false;
-  messageEl.style.visibility = 'hidden';
   increaseBtn.classList.remove('red');
+  removeMessageElement();
 }
 
 increaseBtn.addEventListener('click', handleIncreaseClick);
