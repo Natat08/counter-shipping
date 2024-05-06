@@ -1,5 +1,5 @@
 const freeShippingLimit = 10;
-const outOfStockLimit = 20;
+const outOfStockLimit = 15;
 const bottomLimit = 0;
 let counter = bottomLimit;
 
@@ -18,28 +18,35 @@ const messages = {
 function createSpanElement(message) {
   const newSpan = document.createElement('span');
   newSpan.className = 'message';
-  newSpan.innerText = message;
+  newSpan.innerHTML = message;
   return newSpan;
 }
-// parentEl.appendChild(newSpan);
+
+function addMessageElement(parentElement, message) {
+  const messageElement = createSpanElement(message);
+  parentElement.appendChild(messageElement);
+}
+
+function removeMessageElement() {
+  const messageElement = document.querySelector('.message');
+  messageElement.remove();
+}
 
 function handleIncreaseClick() {
   counter++;
   resultEl.innerHTML = counter;
   if (counter > bottomLimit) {
     decreaseBtn.disabled = false;
-    messageEl.style.visibility = 'hidden';
   }
 
-  if (counter >= freeShippingLimit && counter < outOfStockLimit) {
-    messageEl.innerHTML = messageAboutFreeShipping;
-    messageEl.style.visibility = 'visible';
+  if (counter === freeShippingLimit) {
+    addMessageElement(mainEl, messages.freeShipping);
   }
 
-  if (counter >= outOfStockLimit) {
+  if (counter === outOfStockLimit) {
     increaseBtn.classList.add('red');
-    messageEl.innerHTML = messageAboutOutOfStock;
-    messageEl.style.visibility = 'visible';
+    removeMessageElement();
+    addMessageElement(mainEl, messages.outOfStock);
   }
 }
 
