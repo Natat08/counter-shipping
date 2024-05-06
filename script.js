@@ -7,11 +7,21 @@ const increaseBtn = document.querySelector('.increase');
 const decreaseBtn = document.querySelector('.decrease');
 const resetBtn = document.querySelector('.reset');
 const resultEl = document.querySelector('.result');
-const messageEl = document.querySelector('.message');
+const mainEl = document.querySelector('main');
+
+// const messageEl = document.querySelector('.message');
 
 const messageAboutFreeShipping = 'You have free shipping';
 const messageAboutOutOfStock = 'Out of stock';
 const messageAboutBottomLimit = `You have reached the bottom limit - ${bottomLimit}`;
+
+function createSpanElement(message) {
+  const newSpan = document.createElement('span');
+  newSpan.className = 'message';
+  newSpan.innerText = message;
+  return newSpan;
+}
+// parentEl.appendChild(newSpan);
 
 function handleIncreaseClick() {
   counter++;
