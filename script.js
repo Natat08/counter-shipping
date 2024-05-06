@@ -9,11 +9,11 @@ const resetBtn = document.querySelector('.reset');
 const resultEl = document.querySelector('.result');
 const mainEl = document.querySelector('main');
 
-// const messageEl = document.querySelector('.message');
-
-const messageAboutFreeShipping = 'You have free shipping';
-const messageAboutOutOfStock = 'Out of stock';
-const messageAboutBottomLimit = `You have reached the bottom limit - ${bottomLimit}`;
+const messages = {
+  freeShipping: 'You have free shipping',
+  outOfStock: 'Out of stock',
+  bottomLimit: `You have reached the bottom limit - ${bottomLimit}`,
+};
 
 function createSpanElement(message) {
   const newSpan = document.createElement('span');
