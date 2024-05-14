@@ -1,3 +1,9 @@
+// This is a perfect script! 
+// Now we just need to improve the readability of the script
+//
+// I would transfer addEventListeners after querySelectors
+// And after some thinking, I think that's about it. :)
+
 const freeShippingLimit = 10;
 const outOfStockLimit = 20;
 const bottomLimit = 0;
@@ -9,6 +15,7 @@ const resetBtn = document.querySelector('.reset');
 const resultEl = document.querySelector('.result');
 const mainEl = document.querySelector('main');
 
+// Nice job with object! 
 const messages = {
   freeShipping: 'You have free shipping',
   outOfStock: 'Out of stock',
@@ -45,6 +52,7 @@ function handleIncreaseClick() {
   }
 
   if (counter === outOfStockLimit) {
+    // Pretty nice trick!
     increaseBtn.classList.add('red');
     removeMessageElement();
     addMessageElement(messages.outOfStock);
